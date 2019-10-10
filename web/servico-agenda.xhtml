@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <f:metadata> <!-- carrega a lista de Servicos -->
+            <f:viewAction action="#{servicoAgendaBean.relatorioDeServicos()}"/>]
+            <f:viewAction action="#{servicoAgendaBean.renderizarGrafico()}"/>
+        </f:metadata>
+
+        <title>PET SHOP</title>
+        <h:outputStylesheet library="css" name="estilo.css"/>
+    </h:head>
+    <h:body>
+        <header>
+            <div class="container">
+                <p>Consulta de Servicos</p>
+            </div>
+
+        </header>
+        <article>
+            <div class="container">
+                <h:form id="frm"> <!-- Inicia o Formulario-->
+                    <p:toolbar>
+                        <f:facet name="left">    
+
+                            <!-- pesquisa-->
+                            <p:inputText id="pesquisa"
+                                         placeholder="Faça sua Busca..."
+                                         size="35"/>
+
+                            <!-- Botoes-->
+                            <p:commandButton title="Pesquisar" value="Pesquisar" icon="fa fa-search"/>
+                            <span class="ui-separator">
+                                <span class="ui-icon ui-icon-grip-dotted-vertical"/>
+                            </span>
+                            <p:commandButton  title="Novo" value="Novo" oncomplete="PF('edicaoServicoDialog').show()" icon="fa fa-plus"/>
+                            <span class="ui-separator">
+                                <span class="ui-icon ui-icon-grip-dotted-vertical"/>
+                            </span>
+                            <p:commandButton title="Editar" icon="fa fa-edit"/>
+                            <p:commandButton title="Excluir" icon="fa fa-trash"/>
+                            <span class="ui-separator">
+                                <span class="ui-icon ui-icon-grip-dotted-vertical"/>
+                            </span>
+                            <p:commandButton title="Enviar Por E-mail" icon="fa fa-send"/>
+                            <span class="ui-separator">
+                                <span class="ui-icon ui-icon-grip-dotted-vertical"/>
+                            </span>
+
+
+                        </f:facet>
+                    </p:toolbar>
+
+                    <!-- Campos de saida-->
+                    <p:spacer height="20px"/>
+                    <p:dataTable value="#{servicoAgendaBean.listaDeServicos}" var="servico" emptyMessage="Nenhum Servico Localizado." paginator="true" rows="10" paginatorPosition="bottom">
+                        <p:column width="3%" headerText="ID">
+                            <h:outputText  value="#{servico.id}"/>
+                        </p:column>
+                        <p:column headerText="Serviço">
+                            <h:outputText value="#{servico.servico}"/>
+                        </p:column>
+                        <p:column width="10%" headerText="Preço">
+                            <h:outputText value="#{servico.valor}"/>
+                        </p:column>
+                        <p:column  width="10%" headerText="Data Marcada">
+                            <h:outputText value="#{servico.dataServico}">
+                                <f:convertDateTime pattern="dd/MM/YYYY"/>
+                            </h:outputText>
+                        </p:column>
+
+                    </p:dataTable>
+
+                    <p:spacer height="20px"/>
+                    <p:dataTable value="#{servicoAgendaBean.valoresGrafico}" var="servico" emptyMessage="Nenhum Servico Localizado." paginator="true" rows="10" paginatorPosition="bottom">
+                        <p:column headerText="Serviço">
+                            <h:outputText value="#{servico.servico}"/>
+                        </p:column>
+                        <p:column width="10%" headerText="Preço">
+                            <h:outputText value="#{servico.valor}"/>
+                        </p:column>
+
+                    </p:dataTable>
+
+
+                    <!-- Campos de Entrada-->
+                    <p:dialog header="Novo Servico" widgetVar="edicaoServicoDialog" id="servico-dialog" resizable="false" modal="true" closeOnEscape="true">
+                        <h:panelGrid columns="2">
+                            <p:outputLabel value="Valor" for="valor" />
+                            <p:inputText id="valor"/>
+
+                            <p:outputLabel value="Data" for="data" />
+                            <p:inputMask mask="99/99/9999" id="data"/>
+
+                            <p:outputLabel/>
+                            <p:commandButton value="Salvar" oncomplete="PF('edicaoServicoDialog')"/>
+                        </h:panelGrid>
+                    </p:dialog>
+                    <p:spacer height="20px"/>
+                    <p:chart type="bar" model="#{servicoAgendaBean.modeloBar}" style="width: 50%"/>
+                    <p:spacer height="200px"/>
+
+                </h:form>
+            </div>
+        </article>
+    </h:body>
+</html>
+

@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+header{
+    height: 60px;
+    border-bottom: 1px solid #CCCCC;
+}
+
+header p {
+    font-size: 32px;
+    color:#00BFFF;
+
+}
+
+article{
+    margin-top: 20px;
+}
+
+.container{
+    width: 80%;
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+
+
+}

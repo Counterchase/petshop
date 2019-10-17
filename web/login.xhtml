@@ -4,43 +4,29 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
-
     <h:head>
-        
-        <title>Login</title>
+        <title>Crud com CDI</title>
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
     <h:body>
         <header>
-            <div class="container">
-                <p>PET SHOP</p>
+            <div class="conteiner">
+                <p>Aula de Frameworks 2 - JSF e CDI</p>
             </div>
-
         </header>
         <article>
-            <div class="container">
-                <h:form id="frm"> <!-- Inicia o Formulario-->
-                    
-                    <!-- Campos de Login-->
-                    <p:panel header="Login" style="width: 400px" >
+            <div class="conteiner">
+                <h:form id="frm">
+                    <p:panel header="Login" style="width: 400px">
                         <h:panelGrid columns="2">
-                            <p:outputLabel style=" font-weight: bold;" value="Usuario" for="usuario" />
-                            <p:inputText id="usuario"/>
-
-                            <p:outputLabel style=" font-weight: bold;" value="Senha" for="senha" />
-                            <p:password id="senha"/>
-
-                            <p:outputLabel/>
+                            <p:outputLabel value="Usuario" for="usuario" />
+                            <p:inputText id="usuario" />
+                            <p:outputLabel value="Senha" for="senha"/>
+                            <p:inputText id="senha" />
                             <p:commandButton value="Login" action="#{autenticar.executarAutenticacao()}"/>
-                          
-                           <p style="font-size:10px">Não tem Cadastro? <a href="dontpad.com/cadastro" >Cadastre-se Aqui!!</a></p>
                         </h:panelGrid>
                         <p:outputLabel value="#{autenticar.mensagem}"/>
                     </p:panel>
-
-
-
                 </h:form>
             </div>
         </article>

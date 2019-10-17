@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/webappframeworks2">
+<Context path="/petshop">
   <Manager pathname=""/>
-  <Resource auth="Container" factory="org.jboss.weld.resources.ManagerObject.Factory" name="BeanManager" type="javax.enterprise.injact.spi.BeanManager"/>
+  <Resource auth="Container" factory="org.jboss.weld.resources.ManagerObjectFactory" name="BeanManager" type="javax.enterprise.inject.spi.BeanManager"/>
 </Context>

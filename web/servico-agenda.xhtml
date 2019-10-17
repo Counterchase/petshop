@@ -4,99 +4,100 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    <h:head>
+    <h:body style="width: 95%;
+            margin: 0 auto;">
         <f:metadata>
             <f:viewAction action="#{servicoAgendaBean.relatorioDeServicos()}"/>
             <f:viewAction action="#{servicoAgendaBean.renderizarGrafico()}"/>
         </f:metadata>
         <title>Crud com CDI</title>
         <h:outputStylesheet library="css" name="estilo.css"/>
-    </h:head>
-    <h:body>
-        <header>
-            <div class="conteiner">
-                <p>Aula de Frameworks 2 - JSF e CDI</p>
-            </div>
-        </header>
-        <article>
-            <div class="conteiner">
-                <h:form id="frm">
-                    <p:toolbar>
-                        <f:facet name="left">
-                            <p:inputText id="pesquisa"
-                                         placeholder="Informe o nome..."
-                                         size="35"/>
-                            <p:commandButton value="Pesquisar" icon="fa fa-search"/>
-                            <span class="ui-separator">
-                                <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                            </span>
-                            <p:commandButton value="Novo" icon="fa fa-plus"
-                                             oncomplete="PF('edicaoClienteDialog').show()"/>
-                            <span class="ui-separator">
-                                <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                            </span>
-                            <p:commandButton title="Editar" icon="fa fa-edit"/>
-                            <p:commandButton title="Excluir" icon="fa fa-trash"/>
-                            <span class="ui-separator">
-                                <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                            </span>
-                        </f:facet>
+        </h:head>
+        <h:body>
+            <header>
+                <div class="conteiner">
+                    <p>Aula de Frameworks 2 - JSF e CDI</p>
+                </div>
+            </header>
+            <article>
+                <div class="conteiner">
+                    <h:form id="frm">
+                        <p:toolbar>
+                            <f:facet name="left">
+                                <p:inputText id="pesquisa"
+                                             placeholder="Informe o nome..."
+                                             size="35"/>
+                                <p:commandButton value="Pesquisar" icon="fa fa-search"/>
+                                <span class="ui-separator">
+                                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                                </span>
+                                <p:commandButton value="Novo" icon="fa fa-plus"
+                                                 oncomplete="PF('edicaoClienteDialog').show()"/>
+                                <span class="ui-separator">
+                                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                                </span>
+                                <p:commandButton title="Editar" icon="fa fa-edit"/>
+                                <p:commandButton title="Excluir" icon="fa fa-trash"/>
+                                <span class="ui-separator">
+                                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                                </span>
+                            </f:facet>
 
-                        <f:facet name="right">
-                            <span class="ui-separator">
-                                <span class="ui-icon ui-icon-grip-dotted-vertical" />
-                            </span>
-                            <p:commandButton title="Gerar Planilha" icon="fa fa-file-excel-o" ajax="false">
-                                <p:dataExporter type="xls" target="servico-agenda" fileName="Relatorio-de-serviços"/>
-                            </p:commandButton>
-                            <p:commandButton title="Gerar PDF" icon="fa fa-file-pdf-o" ajax="false">
-                                <p:dataExporter type="pdf" target="servico-agenda" fileName="Relatorio-de-serviços"/>
-                            </p:commandButton>
-                        </f:facet>
+                            <f:facet name="right">
+                                <span class="ui-separator">
+                                    <span class="ui-icon ui-icon-grip-dotted-vertical" />
+                                </span>
+                                <p:commandButton title="Gerar Planilha" icon="fa fa-file-excel-o" ajax="false">
+                                    <p:dataExporter type="xls" target="servico-agenda" fileName="Relatorio-de-serviços"/>
+                                </p:commandButton>
+                                <p:commandButton title="Gerar PDF" icon="fa fa-file-pdf-o" ajax="false">
+                                    <p:dataExporter type="pdf" target="servico-agenda" fileName="Relatorio-de-serviços"/>
+                                </p:commandButton>
+                            </f:facet>
 
-                    </p:toolbar>
-                    <p:spacer height="20px"/>
-                    <p:dataTable id="servico-agenda" value="#{servicoAgendaBean.listaDeServicos}"
-                                 var="servico"
-                                 emptyMessage="Nenhum serviço localizado."
-                                 paginator="true" rows="10"
-                                 paginatorPosition="bottom">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{servico.id}" />
-                        </p:column>
-                        <p:column headerText="Serviço">
-                            <h:outputText value="#{servico.servico}" />
-                        </p:column>
-                        <p:column headerText="Valor">
-                            <h:outputText value="#{servico.valor}" />
-                        </p:column>
-                        <p:column headerText="Data">
-                            <h:outputText value="#{servico.dataServico}" >
-                                <f:convertDateTime pattern="dd/MM/yyyy"/>
-                            </h:outputText>
-                        </p:column>
-                    </p:dataTable>
+                        </p:toolbar>
+                        <p:spacer height="20px"/>
+                        <p:dataTable id="servico-agenda" value="#{servicoAgendaBean.listaDeServicos}"
+                                     var="servico"
+                                     emptyMessage="Nenhum serviço localizado."
+                                     paginator="true" rows="10"
+                                     paginatorPosition="bottom">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{servico.id}" />
+                            </p:column>
+                            <p:column headerText="Serviço">
+                                <h:outputText value="#{servico.servico}" />
+                            </p:column>
+                            <p:column headerText="Valor">
+                                <h:outputText value="#{servico.valor}" />
+                            </p:column>
+                            <p:column headerText="Data">
+                                <h:outputText value="#{servico.dataServico}" >
+                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                </h:outputText>
+                            </p:column>
+                        </p:dataTable>
 
-                    <!--                    <p:spacer height="20px"/>
-                                        <p:dataTable value="#{servicoAgendaBean.valoresGrafico}"
-                                                     var="servico"
-                                                     emptyMessage="Nenhum serviço localizado."
-                                                     paginator="true" rows="10"
-                                                     paginatorPosition="bottom">
-                                            <p:column headerText="Serviço">
-                                                <h:outputText value="#{servico.servico}" />
-                                            </p:column>
-                                            <p:column headerText="Valor">
-                                                <h:outputText value="#{servico.valor}" />
-                                            </p:column>
-                                        </p:dataTable>
-                    
-                                        <p:spacer height="20px"/>
-                                        <p:chart type="bar" model="#{servicoAgendaBean.modeloBar}" style="width: 50%"/>
-                                        <p:spacer height="200px"/>-->
-                </h:form>
-            </div>
-        </article>
-    </h:body>
+                        <!--                    <p:spacer height="20px"/>
+                                            <p:dataTable value="#{servicoAgendaBean.valoresGrafico}"
+                                                         var="servico"
+                                                         emptyMessage="Nenhum serviço localizado."
+                                                         paginator="true" rows="10"
+                                                         paginatorPosition="bottom">
+                                                <p:column headerText="Serviço">
+                                                    <h:outputText value="#{servico.servico}" />
+                                                </p:column>
+                                                <p:column headerText="Valor">
+                                                    <h:outputText value="#{servico.valor}" />
+                                                </p:column>
+                                            </p:dataTable>
+                        
+                                            <p:spacer height="20px"/>
+                                            <p:chart type="bar" model="#{servicoAgendaBean.modeloBar}" style="width: 50%"/>
+                                            <p:spacer height="200px"/>-->
+                    </h:form>
+                </div>
+            </article>
+        </h:body>
 </html>
 

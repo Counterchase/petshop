@@ -8,7 +8,8 @@
         <title>Crud com CDI</title>
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
-    <h:body>
+    <h:body style="width: 95%;
+            margin: 0 auto;">
         <header>
             <div class="conteiner">
                 <p>Aula de Frameworks 2 - JSF e CDI</p>
@@ -24,6 +25,11 @@
                             <p:outputLabel value="Senha" for="senha"/>
                             <p:inputText id="senha" />
                             <p:commandButton value="Login" action="#{autenticar.executarAutenticacao()}"/>
+                            
+                            <label style="font-size: 10px;">Ou faça seu <a href="http://localhost:8084/petshop/cadastro.xhtml">Cadastro Aqui!!</a></label>
+                                
+
+                            
                         </h:panelGrid>
                         <p:outputLabel value="#{autenticar.mensagem}"/>
                     </p:panel>

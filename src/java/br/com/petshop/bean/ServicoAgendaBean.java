@@ -2,6 +2,7 @@ package br.com.petshop.bean;
 
 import br.com.petshop.model.ServicoAgenda;
 import br.com.petshop.repository.ServicoAgendas;
+import br.com.petshop.util.relatorio.GerarRelatorioAgenda;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
@@ -21,9 +22,10 @@ public class ServicoAgendaBean implements Serializable{
     private List<ServicoAgenda> valoresGrafico;
     private BarChartModel modeloBar;
     private PieChartModel modeloPie;
+    private GerarRelatorioAgenda relatorioAgenda;
     
     public void gerarRelatorio(){
-        
+        relatorioAgenda.gerarPDFJasperReport();
     }
     
     public void relatorioDeServicos(){

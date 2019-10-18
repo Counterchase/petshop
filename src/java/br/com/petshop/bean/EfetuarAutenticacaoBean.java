@@ -1,6 +1,10 @@
 package br.com.petshop.bean;
 
 import br.com.petshop.model.Autenticacao;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -11,9 +15,19 @@ public class EfetuarAutenticacaoBean {
     private Autenticacao autenticacao;
     private String usuario, senha;
     private String mensagem;
+    
+    public void executarChamada(){
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(EfetuarAutenticacaoBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void executarAutenticacao() {
-        mensagem = autenticacao.autenticar("admin", "admin");
+        System.out.println("Usuario..:" +this.usuario);
+        System.out.println("Senha..:" +this.senha);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Acesso Autorizado!"));
     }
 
     public String getMensagem() {

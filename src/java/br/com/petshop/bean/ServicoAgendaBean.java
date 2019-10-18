@@ -22,6 +22,10 @@ public class ServicoAgendaBean implements Serializable{
     private BarChartModel modeloBar;
     private PieChartModel modeloPie;
     
+    public void gerarRelatorio(){
+        
+    }
+    
     public void relatorioDeServicos(){
         listaDeServicos = servicos.pesquisarTodos();
         valoresGrafico = servicos.pesquisarValoresGrafico();

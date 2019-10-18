@@ -21,6 +21,7 @@
         <article>
             <div class="conteiner">
                 <h:form id="frm">
+                    <p:messages  />
                     <p:commandButton value="Cadastre-se como Usuario" icon="fa fa-plus"
                                              oncomplete="PF('edicaoClienteDialog').show()"/>
                     <p:dialog header="Novo Usuario"
@@ -45,11 +46,10 @@
                             <p:outputLabel value="Endereco" for="endereco"/>
                             <p:inputText id="endereco" />
                             <p:outputLabel value="Senha" for="senha" />
-                            <p:password id="senha" />
-                            <p:outputLabel value="Confirmar Senha" for="senha2" />
-                            <p:password id="senha2" />
-                            <p:commandButton value="Salvar"
-                                             oncomplete="sPF('edicaoClienteDialog').hide()" />
+                            <p:password id="senha" required="true" match="confirmeSenha" validatorMessage="As Senhas Devem Ser Iguais" feedback="true" weakLabel="Réba" goodLabel="Maomeno" strongLabel="Ducaralho" promptLabel="Cadastre sua senha" inline="true"/>
+                            <p:outputLabel value="Confirmar a  Senha" for="confirmeSenha" />
+                            <p:password id="confirmeSenha" required="true" feedback="true" weakLabel="Réba" goodLabel="Maomeno" strongLabel="Ducaralho" promptLabel="Cadastre sua senha" inline="true"/>
+                            <p:commandButton value="Cadastrar" action="#{autenticar.executarAutenticacao()}" update="@form"/>
                         </h:panelGrid>
                     </p:dialog>
                 </h:form>

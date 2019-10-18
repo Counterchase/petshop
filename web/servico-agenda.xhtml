@@ -6,6 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
     <h:body style="width: 95%;
             margin: 0 auto;">
+        <h:head>
         <f:metadata>
             <f:viewAction action="#{servicoAgendaBean.relatorioDeServicos()}"/>
             <f:viewAction action="#{servicoAgendaBean.renderizarGrafico()}"/>
@@ -13,7 +14,6 @@
         <title>Crud com CDI</title>
         <h:outputStylesheet library="css" name="estilo.css"/>
         </h:head>
-        <h:body>
             <header>
                 <div class="conteiner">
                     <p>Aula de Frameworks 2 - JSF e CDI</p>
@@ -53,6 +53,7 @@
                                 <p:commandButton title="Gerar PDF" icon="fa fa-file-pdf-o" ajax="false">
                                     <p:dataExporter type="pdf" target="servico-agenda" fileName="Relatorio-de-serviços"/>
                                 </p:commandButton>
+                                    <p:commandButton value="Jasper" action="#{servicoAgendaBean.gerarRelatorio()}" icon="fa fa-file-pdf-o" ajax="false"/>
                             </f:facet>
 
                         </p:toolbar>

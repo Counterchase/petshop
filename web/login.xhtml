@@ -8,23 +8,40 @@
         <title>Crud com CDI</title>
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
-    <h:body style="width: 95%;
-            margin: 0 auto;">
+    <h:body >
         <header>
             <div class="conteiner">
-                <p>Aula de Frameworks 2 - JSF e CDI</p>
+                <p>Petshop</p>
             </div>
         </header>
         <article>
             <div class="conteiner">
                 <h:form id="frm">
+                    <p:messages  />
+                    <!--notificação ajax -->
+                    <p:ajaxStatus styleClass="ajax-status">
+                        <f:facet name="start">
+                            <h:graphicImage library="images" name="loading.gif" />
+                        </f:facet>
+                        <f:facet name="complete">
+                        </f:facet>
+                    </p:ajaxStatus>
+                    
+                    <p:ajaxStatus onstart="PF('statusDialog').show()"
+                                  onsuccess="PF('statusDialog').hide"/>
+                    
+                    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" resizable="false" closable="false" showHeader="false" > 
+                        <p:outputLabel value="Carregando..."/>
+                       <p:graphicImage library="images" name="ajaxloadingbar.gif" />
+                    </p:dialog>
+                     <!--notificação ajax -->
                     <p:panel header="Login" style="width: 400px">
                         <h:panelGrid columns="2">
                             <p:outputLabel value="Usuario" for="usuario" />
-                            <p:inputText id="usuario" />
+                            <p:inputText required="true" id="usuario" value="#{autenticar.usuario}" />
                             <p:outputLabel value="Senha" for="senha"/>
-                            <p:inputText id="senha" />
-                            <p:commandButton value="Login" action="#{autenticar.executarAutenticacao()}"/>
+                            <p:password required="true" id="senha" value="#{autenticar.senha}"/>
+                            <p:commandButton value="Login" action="#{autenticar.executarAutenticacao()}" update="@form"/>
                             
                             <label style="font-size: 10px;">Ou faça seu <a href="http://localhost:8084/petshop/cadastro.xhtml">Cadastro Aqui!!</a></label>
                                 
@@ -33,6 +50,8 @@
                         </h:panelGrid>
                         <p:outputLabel value="#{autenticar.mensagem}"/>
                     </p:panel>
+                     <br/>
+                     <p:commandButton value="Ajax Status" icon="fa fa-refresh" action="#{autenticar.executarChamada()}" />
                 </h:form>
             </div>
         </article>

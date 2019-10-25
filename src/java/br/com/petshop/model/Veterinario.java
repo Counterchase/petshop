@@ -1,6 +1,17 @@
 package br.com.petshop.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name = "veterinario")
 public class Veterinario extends Funcionario implements EfetuarAutenticacao{
+    
+  
     private String usuario;
     private String senha;
     
@@ -15,6 +26,6 @@ public class Veterinario extends Funcionario implements EfetuarAutenticacao{
 
     @Override
     public Double bonificacao() {
-        return this.salario * 0.2;
+        return this.salario * 0.5;
     }
 }

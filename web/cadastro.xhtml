@@ -6,52 +6,58 @@
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <f:metadata>
-            <f:viewAction action="#{clientesBean.todosOsClientes()}"/>
+            <f:viewAction action="#{funcionariosBean.todosOsFuncionarios()}"/>
         </f:metadata>
-        <title>Crud com CDI</title>
+        <title>Cadastro</title>
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
     <h:body style="width: 95%;
-                   margin: 0 auto;">
+            margin: 0 auto;">
         <header>
             <div class="conteiner">
-                <p>Aula de Frameworks 2 - JSF e CDI</p>
+                <p>Cadastro Petshop</p>
             </div>
         </header>
         <article>
             <div class="conteiner">
                 <h:form id="frm">
                     <p:messages  />
-                    <p:commandButton value="Cadastre-se como Usuario" icon="fa fa-plus"
-                                             oncomplete="PF('edicaoClienteDialog').show()"/>
-                    <p:dialog header="Novo Usuario"
-                              widgetVar="edicaoClienteDialog"
-                              id="cliente-dialog"
-                              resizable="false"
-                              modal="true"
-                              closeOnEscape="true">
-                        <h:panelGrid columns="2">
-                            <p:outputLabel value="Nome" for="nome" />
-                            <p:inputText id="nome" />
-                            <p:outputLabel value="Login" for="login" />
-                            <p:inputText id="login" />
-                            <p:outputLabel value="RG" for="rg"/>
-                            <p:inputText id="rg" />
-                            <p:outputLabel value="CPF" for="cpf"/>
-                            <p:inputText id="cpf" />
-                            <p:outputLabel value="E-mail" for="email"/>
-                            <p:inputText id="email" />
-                            <p:outputLabel value="Telefone" for="telefone"/>
-                            <p:inputText id="telefone" />
-                            <p:outputLabel value="Endereco" for="endereco"/>
-                            <p:inputText id="endereco" />
-                            <p:outputLabel value="Senha" for="senha" />
-                            <p:password id="senha" required="true" match="confirmeSenha" validatorMessage="As Senhas Devem Ser Iguais" feedback="true" weakLabel="Réba" goodLabel="Maomeno" strongLabel="Ducaralho" promptLabel="Cadastre sua senha" inline="true"/>
-                            <p:outputLabel value="Confirmar a  Senha" for="confirmeSenha" />
-                            <p:password id="confirmeSenha" required="true" feedback="true" weakLabel="Réba" goodLabel="Maomeno" strongLabel="Ducaralho" promptLabel="Cadastre sua senha" inline="true"/>
-                            <p:commandButton value="Cadastrar" action="#{autenticar.executarAutenticacao()}" update="@form"/>
-                        </h:panelGrid>
-                    </p:dialog>
+                    <!-- <p:commandButton value="Cadastre-se como Usuario" icon="fa fa-plus"
+                                              oncomplete="PF('edicaoClienteDialog').show()"/>-->
+                    <!--   <p:dialog header="Novo Usuario"
+                                 widgetVar="edicaoClienteDialog"
+                                 id="cliente-dialog"
+                                 resizable="false"
+                                 modal="true"
+                                 closeOnEscape="true">-->
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Nome" for="nome" />
+                        <p:inputText id="nome" />
+                        <p:outputLabel value="Login" for="login" />
+                        <p:inputText id="login" />
+                        <p:outputLabel value="RG" for="rg"/>
+                        <p:inputText id="rg" />
+                        <p:outputLabel value="CPF" for="cpf"/>
+                        <p:inputText id="cpf" />
+                        <p:outputLabel value="E-mail" for="email"/>
+                        <p:inputText id="email" />
+                        <p:outputLabel value="Telefone" for="telefone"/>
+                        <p:inputText id="telefone" />
+                        <p:outputLabel value="Endereco" for="endereco"/>
+                        <p:inputText id="endereco" />
+                        <p:outputLabel value="Senha" for="senha" />
+                        <p:password id="senha" required="true" match="confirmeSenha" validatorMessage="As Senhas Devem Ser Iguais" feedback="true" weakLabel="Réba" goodLabel="Maomeno" strongLabel="Ducaralho" promptLabel="Cadastre sua senha" inline="true"/>
+                        <p:outputLabel value="Confirmar a  Senha" for="confirmeSenha" />
+                        <p:password id="confirmeSenha" required="true" feedback="true" weakLabel="Réba" goodLabel="Maomeno" strongLabel="Ducaralho" promptLabel="Cadastre sua senha" inline="true"/>
+                        <p:outputLabel value="Cargo do Funcionario" />
+                        <h:selectOneMenu value="funcionario">
+                            <f:selectItem itemLabel="Selecione..." />
+                            <f:selectItem itemValue="atendente" itemLabel="Atendente" />
+                            <f:selectItem itemValue="veterinario" itemLabel="Veterinario" />
+                        </h:selectOneMenu>
+                        <p:commandButton value="Cadastrar" action="#{autenticar.executarAutenticacao()}" update="@form"/>
+                    </h:panelGrid>
+                    <!--   </p:dialog>-->
                 </h:form>
             </div>
         </article>

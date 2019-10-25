@@ -1,15 +1,26 @@
 package br.com.petshop.model;
 
-public class Atendente extends Funcionario implements EfetuarAutenticacao{
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "atendente")
+public class Atendente extends Funcionario implements EfetuarAutenticacao, Serializable{
+
+
+    
     @Override
     public Double bonificacao() {
-        return this.salario * 0.1;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Boolean autenticar(String user, String senha) {
-        return true;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

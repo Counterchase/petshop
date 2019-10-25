@@ -1,13 +1,26 @@
 package br.com.petshop.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Funcionario {
 
+    @Id
+    @GeneratedValue(strategy =GenerationType.SEQUENCE)
     private Integer id;
     private String nome;
     private String cpf;
     private String telefone;
     protected Double salario;
-    
+
     public abstract Double bonificacao();
 //    public abstract Double bonificacao(Double valor);
 

@@ -5,7 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Crud com CDI</title>
+        <title>Petshop</title>
         <h:outputStylesheet library="css" name="estilo.css"/>
     </h:head>
     <h:body >
@@ -44,14 +44,10 @@
                             <p:commandButton value="Login" action="#{autenticar.executarAutenticacao()}" update="@form"/>
                             
                             <label style="font-size: 10px;">Ou faça seu <a href="http://localhost:8084/petshop/cadastro.xhtml">Cadastro Aqui!!</a></label>
-                                
-
-                            
+                             
                         </h:panelGrid>
                         <p:outputLabel value="#{autenticar.mensagem}"/>
                     </p:panel>
-                     <br/>
-                     <p:commandButton value="Ajax Status" icon="fa fa-refresh" action="#{autenticar.executarChamada()}" />
                 </h:form>
             </div>
         </article>

@@ -35,6 +35,12 @@ public class Clientes implements Serializable {
         query.setParameter("nome", nome + "%");
         return query.getResultList();
     }
+    
+    public List<Cliente> pesquisarPorNomePet(String nomepet) {
+        TypedQuery<Cliente> query = em.createQuery("from Cliente where nomepet like :nomepet ", Cliente.class);
+        query.setParameter("nomepet", nomepet + "%");
+        return query.getResultList();
+    }
 
     public List<Cliente> pesquisarTodos() {
         return em.createQuery("from Cliente", Cliente.class).getResultList();

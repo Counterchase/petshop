@@ -19,6 +19,15 @@ public class Cliente implements Serializable, EntidadeBase {
     private String telefone;
     private String email;
     private String endereco;
+    private String nomepet;
+
+    public String getNomepet() {
+        return nomepet;
+    }
+
+    public void setNomepet(String nomepet) {
+        this.nomepet = nomepet;
+    }
 
     @Override
     public Integer getId() {
